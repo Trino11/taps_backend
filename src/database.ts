@@ -1,9 +1,10 @@
-import mysql from 'promise-mysql';
+import mysql, { PoolConfig } from 'promise-mysql';
 
 require('dotenv').config()
 
-const database={
+const database:PoolConfig={
     host:String(process.env.DBHOST),
+    port:Number(process.env.DBPORT),
     user:String(process.env.DBUSER),
     password:String(process.env.DBPASSWORD),
     database:String(process.env.DBDATABASE)

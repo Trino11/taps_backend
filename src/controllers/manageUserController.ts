@@ -75,7 +75,8 @@ class InfoController {
 
             await db.query(`INSERT INTO users (username, password, token) VALUES ('UserToCreate', 'nopasswordyet', '${key}')`)
             let exists = await db.query(`SELECT id FROM users WHERE token = '${key}'`)
-            db.query(`INSERT INTO userxroles VALUES ('${exists[0].id}', '2')`)
+
+            await db.query(`INSERT INTO userxroles VALUES ('${exists[0].id}', '2')`)
 
             res.json({ msg: "ok", token: key })
         } catch (error: any) {

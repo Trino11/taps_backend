@@ -1,3 +1,7 @@
+# Startup
+You'll need to execute the startup.sql in your database for the first time. The default user credentials are root root, you can change it throw the user management.
+
+
 # Routes
 
 

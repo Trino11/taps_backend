@@ -10,7 +10,7 @@ class RecoveryController {
     public async createUserByToken(req: any, res: any) {
         try {
             let token
-            if (req.params.token) {//Usuario creado mediante el token en la url
+            if (req.params.token) {//User created by a JWT on the URL
                 token = req.params.token
                 const value = jwt.verify(token, String(process.env.JWTKEY))//@ts-ignore
                 if (value.creating != true)
@@ -26,16 +26,8 @@ class RecoveryController {
 
             res.status(200).json({ msg: "user will be created" })
 
-
-            // if (!req.body.username || !req.body.password)
-            //     throw new Error()
-            // const username = req.body.username
-            // const hashPassword = await bcrypt.hash(req.body.password, 10)
-
-            // await db.query(`INSERT INTO users (username, password) VALUES ('${username}', '${hashPassword}')`)
             // let exists = await db.query(`SELECT id FROM users WHERE username = '${username}'`)
             // db.query(`INSERT INTO userxroles VALUES ('${exists[0].id}', '2')`)
-            // res.status(200).json({ msg: "user will be created" })
 
         } catch (error: any) {
             res.status(400).json({ msg: "There was a problem, try again later", error: error.message })
@@ -44,7 +36,7 @@ class RecoveryController {
 
 
         //res.json({ msg: "ok" })
-    } //TODO: Create user by a jwt token
+    }
 }
 const recoveryController = new RecoveryController();
 export default recoveryController;
