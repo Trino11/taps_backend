@@ -11,14 +11,14 @@ You'll need to execute the startup.sql in your database for the first time. The 
 
 You can just import the prebuilt package and run it directly following this steps
 - Download from [the releases page](https://github.com/Trino11/taps_backend/releases/download/v1.1.1/taps-backend-1.1.1-dockerimg.tar) the latest version or running `curl https://github.com/Trino11/taps_backend/releases/download/v1.1.1/taps-backend-1.1.1-dockerimg.tar`
-- Execute the command `docker load -i taps-backend-1.1.1-dockerimg.tar taps-backend:1.1.1` where <taps-backend-1.1.1-dockerimg.tar> is the image you previously downloaded and <taps-backend:1.1.1> is the resulting image_name:tag of the image in your docker images.
-- Now you can just run `docker run --name my_taps_panel taps-backend:1.1.1 -p <port>:3000` adding the needed [environment variables](#environment-variables) as explained in the [prebuilt package](#in-the-prebuilt-package) and changing the <port> to the target port of the api.
+- Execute the command `docker load -i taps-backend-1.1.1-dockerimg.tar taps-backend:1.1.1` where `<taps-backend-1.1.1-dockerimg.tar>` is the image you previously downloaded and `<taps-backend:1.1.1>` is the resulting image_name:tag of the image in your docker images.
+- Now you can just run `docker run --name my_taps_panel taps-backend:1.1.1 -p <port>:3000` adding the needed [environment variables](#environment-variables) as explained in the [prebuilt package](#in-the-prebuilt-package) and changing the `<port>` to the target port of the api.
 
 ### Building with Dockerfile
 
-If you want, you can use Docker building by your own the container.
+If you want, you can use Docker building the container by your own.
 - Clone the repository
-- Install the dependences using npm install.
+- Install the dependences using `npm install`.
 - Build the TypeScript project using `tsc` on the root.
 - Modify the Dockerfile described in [the docker environment variables](#in-the-dockerfile) if you need, you can set the default values of the ENV variables there. (You can also change the variables using [the .env file](#using-env-file)).
 - Run `docker build --tag taps-backend:1.1.1 .` to generate a docker image of the project. 
@@ -44,11 +44,11 @@ There are some environment variables and ways to configure it.
 
 ## In the prebuilt package
 
-Also you can just use the prebuilt package following [using prebuilt package](#using-prebuilt-package) and passing the variables with the names [below](in-the-dockerfile) into the arguments, for example: `docker run --env DBHOST_ENV=databasehost.myhost --env DBUSER_ENV=myuser`
+Also you can just use the prebuilt package following [using prebuilt package](#using-prebuilt-package) and passing the variables with the names [below](#in-the-dockerfile) into the arguments, for example: `docker run --env DBHOST_ENV=databasehost.myhost --env DBUSER_ENV=myuser`
 
 ## In the Dockerfile
 
-If you want to use Docker and you will build the project following [the docker building](#docker), you can set them staticly in the Dockerfile or passing the into arguments in the `docker run` command.
+If you want to use Docker and you will build the project following [the docker building](#docker), you can set them staticly in the Dockerfile or [passing them into arguments](#in-the-prebuilt-package) in the `docker run` command.
 
 - ENV JWTTOKEN_ENV=xxxxxxxxxxx        The JSON Web Token token
 - ENV SESSIONKEY_ENV=xxxxxxx          The session key paraphrase
