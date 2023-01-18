@@ -127,5 +127,6 @@ dist
 .pnp.*
 
 # Crt
-crt/
+crtignore
 build/
+.envignore
