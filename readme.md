@@ -15,8 +15,8 @@ Also you can just use the prebuilt package following [using prebuilt package](#u
 
 If you want to use Docker and you will build the project following [the docker building](#docker), you can set them staticly in the Dockerfile or passing the into arguments in the `docker run` command.
 
-- ENV JWTTOKEN=xxxxxxxxxxx            The JSON Web Token token
-- ENV SESSIONKEY=xxxxxxx              The session key paraphrase
+- ENV JWTTOKEN_ENV=xxxxxxxxxxx        The JSON Web Token token
+- ENV SESSIONKEY_ENV=xxxxxxx          The session key paraphrase
 - ENV DBHOST_ENV=127.0.0.1            The database host
 - ENV PORT_ENV=3000                   The app listening port
 - ENV DBPORT_ENV=3306                 The database port
