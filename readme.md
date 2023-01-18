@@ -10,7 +10,8 @@ You'll need to execute the startup.sql in your database for the first time. The 
 ### Using prebuilt package
 
 You can just import the prebuilt package and run it directly following this steps
-- Download from [the releases page](https://github.com/Trino11/taps_backend/releases/download/v1.1.1/taps-backend-1.1.1-dockerimg.tar) the latest version or running `curl https://github.com/Trino11/taps_backend/releases/download/v1.1.1/taps-backend-1.1.1-dockerimg.tar`
+- Download from [the releases page](https://github.com/Trino11/taps_backend/releases/download/v1.1.1/taps-backend-1.1.1-dockerimg.tar) the latest version or running `curl -L -o taps-backend-1.1.1-dockerimg.tar https://github.com/Trino11/taps_backend/releases/download/v1.1.1/taps-backend-1.1.1-dockeri
+mg.tar`
 - Execute the command `docker load -i taps-backend-1.1.1-dockerimg.tar taps-backend:1.1.1` where `<taps-backend-1.1.1-dockerimg.tar>` is the image you previously downloaded and `<taps-backend:1.1.1>` is the resulting image_name:tag of the image in your docker images.
 - Now you can just run `docker run --name my_taps_panel taps-backend:1.1.1 -p <port>:3000` adding the needed [environment variables](#environment-variables) as explained in the [prebuilt package](#in-the-prebuilt-package) and changing the `<port>` to the target port of the api.
 
