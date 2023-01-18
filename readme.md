@@ -10,10 +10,10 @@ You'll need to execute the startup.sql in your database for the first time. The 
 ### Using prebuilt package
 
 You can just import the prebuilt package and run it directly following this steps
-- Download from [the releases page](https://github.com/Trino11/taps_backend/releases/download/v1.1.1/taps-backend-1.1.1-dockerimg.tar) the latest version or running `curl -L -o taps-backend-1.1.1-dockerimg.tar https://github.com/Trino11/taps_backend/releases/download/v1.1.1/taps-backend-1.1.1-dockeri
+- Download from [the releases page](https://github.com/Trino11/taps_backend/releases/download/v1.1.2/taps-backend-1.1.2-dockerimg.tar) the latest version or running `curl -L -o taps-backend-1.1.2-dockerimg.tar https://github.com/Trino11/taps_backend/releases/download/v1.1.2/taps-backend-1.1.2-dockeri
 mg.tar`
-- Execute the command `docker load -i taps-backend-1.1.1-dockerimg.tar` where `<taps-backend-1.1.1-dockerimg.tar>` is the image you previously downloaded.
-- Now you can just run `docker run --name my_taps_panel taps-backend:1.1.1 -p <port>:3000` adding the needed [environment variables](#environment-variables) as explained in the [prebuilt package](#in-the-prebuilt-package) and changing the `<port>` to the target port of the api.
+- Execute the command `docker load -i taps-backend-1.1.2-dockerimg.tar` where `<taps-backend-1.1.2-dockerimg.tar>` is the image you previously downloaded.
+- Now you can just run `docker run --name my_taps_panel taps-backend:1.1.2 -p <port>:3000` adding the needed [environment variables](#environment-variables) as explained in the [prebuilt package](#in-the-prebuilt-package) and changing the `<port>` to the target port of the api.
 
 ### Building with Dockerfile
 
@@ -22,11 +22,11 @@ If you want, you can use Docker building the container by your own.
 - Install the dependences using `npm install`.
 - Build the project using `tsc` if you have TypeScript installed globally, or `npm run build` if not.
 - Modify the Dockerfile described in [the docker environment variables](#in-the-dockerfile) if you need, you can set the default values of the ENV variables there. (You can also change the variables using [the .env file](#using-env-file)).
-- Run `docker build --tag taps-backend:1.1.1 .` to generate a docker image of the project. 
+- Run `docker build --tag taps-backend:1.1.2 .` to generate a docker image of the project. 
 
-If you need to extract the image to a file, you can use `docker save --output <outputfilepath>.tar taps-backend:1.1.1` where `<outputfilepath>` is the path of the output file.
+If you need to extract the image to a file, you can use `docker save --output <outputfilepath>.tar taps-backend:1.1.2` where `<outputfilepath>` is the path of the output file.
 
-Then you can import the file image with `docker load -i <inputfilepath>.tar taps-backend:1.1.1` where `<inputfilepath>` is the path to the image file .tar.
+Then you can import the file image with `docker load -i <inputfilepath>.tar taps-backend:1.1.2` where `<inputfilepath>` is the path to the image file .tar.
 
 
 ## Native
