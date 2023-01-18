@@ -27,11 +27,17 @@ If you want to use Docker and you will build the project following [the docker b
 ## Using env file
 
 Here, you will need to do the [dockerfile](#building-with-dockerfile) or [native](#native) option since you will need to build the project.
-You need to set a `.env` file in the root of the project and those are the variables that you can change.
-- ...
-- ...
-- ...
-- ...
+You need to create a `.env` file in the root of the project and those are the variables that you can change. Put your value inside the "".
+- JWTKEY=""
+- KEYSSN=""
+- DBHOST=""
+- PORT=""
+- DBPORT=""
+- DBUSER=""
+- DBPASSWORD=""
+- DBDATABASE=""
+
+By example: `PORT="3000"`
 
 
 # Using the app
