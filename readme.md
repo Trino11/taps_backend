@@ -1,6 +1,41 @@
 # Startup
 
-You'll need to execute the startup.sql in your database for the first time. The default user credentials will be root root, you can change it throw the user management of the api or directly on the sql script.
+You'll need to execute the startup.sql in your database for the first time. The default admin user credentials in the panel will be root root, you can change it throw the user management of the api or directly on the sql script (note: the password is hashed).
+
+
+# Using the app
+
+## Docker
+
+### Using prebuilt package
+
+You can just import the prebuilt package and run it directly following this steps
+- Download from [the releases page](https://github.com/Trino11/taps_backend/releases/download/v1.1.1/taps-backend-1.1.1-dockerimg.tar) the latest version or running `curl https://github.com/Trino11/taps_backend/releases/download/v1.1.1/taps-backend-1.1.1-dockerimg.tar`
+- Execute the command `docker load -i taps-backend-1.1.1-dockerimg.tar taps-backend:1.1.1` where <taps-backend-1.1.1-dockerimg.tar> is the image you previously downloaded and <taps-backend:1.1.1> is the resulting image_name:tag of the image in your docker images.
+- Now you can just run `docker run --name my_taps_panel taps-backend:1.1.1 -p <port>:3000` adding the needed [environment variables](#environment-variables) as explained in the [prebuilt package](#in-the-prebuilt-package) and changing the <port> to the target port of the api.
+
+### Building with Dockerfile
+
+If you want, you can use Docker building by your own the container.
+- Clone the repository
+- Install the dependences using npm install.
+- Build the TypeScript project using `tsc` on the root.
+- Modify the Dockerfile described in [the docker environment variables](#in-the-dockerfile) if you need, you can set the default values of the ENV variables there. (You can also change the variables using [the .env file](#using-env-file)).
+- Run `docker build --tag taps-backend:1.1.1 .` to generate a docker image of the project. 
+
+If you need to extract the image to a file, you can use `docker save --output <outputfilepath>.tar taps-backend:1.1.1` where `<outputfilepath>` is the path of the output file.
+
+Then you can import the file image with `docker load -i <inputfilepath>.tar taps-backend:1.1.1` where `<inputfilepath>` is the path to the image file .tar.
+
+
+## Native
+
+To run the project directly with Node, you will need to 
+- Clone the repository
+- Configure the .env variables creating a `.env` file on the root, and using the [Environment Variables](#using-env-file)
+- Install node dependences using `npm install`
+- Build the project using `tsc` if you have TypeScript installed globally, or `npm run build` if not.
+- The command `npm start` will start the app in developer mode.
 
 
 # Environment Variables
@@ -38,41 +73,6 @@ You need to create a `.env` file in the root of the project and those are the va
 - DBDATABASE=""
 
 By example: `PORT="3000"`
-
-
-# Using the app
-
-## Docker
-
-### Using prebuilt package
-
-You can just import the prebuilt package and run it directly following this steps
-- Download from [the releases page](https://github.com/Trino11/taps_backend/releases/download/v1.1.1/taps-backend-1.1.1-dockerimg.tar) the latest version or running `curl https://github.com/Trino11/taps_backend/releases/download/v1.1.1/taps-backend-1.1.1-dockerimg.tar`
-- Execute the command `docker load -i taps-backend-1.1.1-dockerimg.tar taps-backend:1.1.1` where <taps-backend-1.1.1-dockerimg.tar> is the image you previously downloaded and <taps-backend:1.1.1> is the resulting image_name:tag of the image in your docker images.
-- Now you can just run `docker run --name my_taps_panel taps-backend:1.1.1 -p <port>:3000` adding the needed [environment variables](#environment-variables) as explained in the [prebuilt package](#in-the-prebuilt-package) and changing the <port> to the target port of the api.
-
-### Building with Dockerfile
-
-If you want, you can use Docker building by your own the container.
-- Clone the repository
-- Install the dependences using npm install.
-- Build the TypeScript project using `tsc` on the root.
-- Modify the Dockerfile described in [the docker environment variables](#in-the-dockerfile) if you need, you can set the default values of the ENV variables there. (You can also change the variables using [the .env file](#using-env-file)).
-- Run `docker build --tag taps-backend:1.1.1 .` to generate a docker image of the project. 
-
-If you need to extract the image to a file, you can use `docker save --output <outputfilepath>.tar taps-backend:1.1.1` where `<outputfilepath>` is the path of the output file.
-
-Then you can import the file image with `docker load -i <inputfilepath>.tar taps-backend:1.1.1` where `<inputfilepath>` is the path to the image file .tar.
-
-
-## Native
-
-To run the project directly with Node, you will need to 
-- Clone the repository
-- Configure the .env variables creating a `.env` file on the root, and using the [Environment Variables](#using-env-file)
-- Install node dependences using `npm install`
-- Build the project using `tsc` if you have TypeScript installed globally, or `npm run build` if not.
-- The command `npm start` will start the app in developer mode.
 
 
 # Routes
