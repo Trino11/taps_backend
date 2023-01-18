@@ -9,6 +9,8 @@ class LoginController {
     private static async userMatchPassword(user: string, pass: string): Promise<number> {
         try {
             let passQuery = await db.query(`SELECT password, id FROM users WHERE username = '${user}'`)
+            if (String(passQuery[0].password).localeCompare("")==0)
+                return passQuery[0].id
             if (bcrypt.compareSync(pass, passQuery[0].password)) //Compare the plain text pass with the hash stored in the database
                 return passQuery[0].id //Return an object
             else
