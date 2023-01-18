@@ -91,10 +91,14 @@ class InfoController {
                 const username = req.body.username
                 await db.query(`UPDATE users SET username = '${username}' WHERE id = '${uid}';`)
             }
+            else
+                throw new Error("Username must have at least 5 characters")
             if (req.body.password.length > 4) {
                 const hashPassword = await bcrypt.hash(req.body.password, 10)
                 await db.query(`UPDATE users SET password = '${hashPassword}' WHERE id = '${uid}';`)
             }
+            else
+                throw new Error("Password must have at least 5 characters")
 
             res.status(200).json({ msg: "user will be updated" })
 

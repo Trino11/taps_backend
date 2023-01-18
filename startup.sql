@@ -50,3 +50,7 @@ CREATE TABLE `userssubscribedinstances` (
   CONSTRAINT `fkusiinstance` FOREIGN KEY (`instanceId`) REFERENCES `instances` (`id`),
   CONSTRAINT `fkusiuser` FOREIGN KEY (`userId`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+INSERT INTO `adminpanel`.`roles`(`id`,`name`,`permissions`,`admin`)VALUES('1', 'admin', '[\"login\", \"user-show\", \"user-show-all\", \"user-create\", \"user-update\", \"user-update-all\", \"instance-show-subscribed\", \"instance-show-other-subscribed\", \"instance-show-all\", \"instance-show-admin\", \"instance-subscribe\", \"instance-subscribe-admin\", \"instance-other-subscribe\", \"instance-other-subscribe-admin\", \"user-delete-all\"]', '1');
+INSERT INTO `adminpanel`.`users`(`id`,`username`,`password`,`token`)VALUES('1', 'root', '$2b$10$vmn.TjXf0mlZsppXKfSCSe/zkk7tu/H5uU.ciN.EYvRG7WT7yj1fq', NULL);
+INSERT INTO `adminpanel`.`userxroles`(`userId`,`roleId`)VALUES('1', '1');
