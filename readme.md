@@ -20,7 +20,7 @@ mg.tar`
 If you want, you can use Docker building the container by your own.
 - Clone the repository
 - Install the dependences using `npm install`.
-- Build the TypeScript project using `tsc` on the root.
+- Build the project using `tsc` if you have TypeScript installed globally, or `npm run build` if not.
 - Modify the Dockerfile described in [the docker environment variables](#in-the-dockerfile) if you need, you can set the default values of the ENV variables there. (You can also change the variables using [the .env file](#using-env-file)).
 - Run `docker build --tag taps-backend:1.1.1 .` to generate a docker image of the project. 
 
