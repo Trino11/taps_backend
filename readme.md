@@ -9,7 +9,7 @@ There are some enviorment variables and ways to configure it.
 
 ## In the Dockerfile
 
-If you want to use Docker and you will build the project following [the docker building](building-with-dockerfile), you can set them staticly in the Dockerfile or passing the into arguments in the `docker run` command.
+If you want to use Docker and you will build the project following [the docker building](#building-with-dockerfile), you can set them staticly in the Dockerfile or passing the into arguments in the `docker run` command.
 - ENV DBHOST_ENV=127.0.0.1            The database host
 - ENV PORT_ENV=3000                   The app listening port
 - ENV DBPORT_ENV=3306                 The database port
@@ -19,12 +19,12 @@ If you want to use Docker and you will build the project following [the docker b
 
 ## In the prebuilt package
 
-Also you can just use the prebuilt package following [using prebuilt package](using-prebuilt-package) and passing the variables into the arguments:
+Also you can just use the prebuilt package following [using prebuilt package](#using-prebuilt-package) and passing the variables into the arguments:
 `docker run .........`
 
 ## Using .env
 
-Here, you will need to do the [dockerfile](building-with-dockerfile) or [native](native) option since you will need to build the project.
+Here, you will need to do the [dockerfile](#building-with-dockerfile) or [native](#native) option since you will need to build the project.
 The variables that you can set in the .env are
 - ...
 - ...
@@ -40,7 +40,7 @@ The variables that you can set in the .env are
 
 You can just import the prebuilt package and run it directly following this steps
 - `docker import https://............`
-- Now you can just run `docker run ........` and passing the needed [enviorment variables](enviorment-variables) as explained in the [prebuilt package](in-the-prebuilt-package)
+- Now you can just run `docker run ........` and passing the needed [enviorment variables](#enviorment-variables) as explained in the [prebuilt package](#in-the-prebuilt-package)
 
 ### Building with Dockerfile
 
@@ -48,7 +48,7 @@ If you want, you can use Docker building by your own the container.
 - Clone the repository
 - Install the dependences using npm install.
 - Build the TypeScript project using `tsc` on the root.
-- Modify the Dockerfile described in [the docker enviorment variables](in-the-dockerfile) if you need, you can set the default values of the ENV variables there. (You can also change the variables using [the .env file](using-.env)).
+- Modify the Dockerfile described in [the docker enviorment variables](#in-the-dockerfile) if you need, you can set the default values of the ENV variables there. (You can also change the variables using [the .env file](#using-.env)).
 - Run `docker build --tag taps-backend:<version> .` to generate a docker image of the project, replace `<version>` with a valid tag, you can just leave it "latest". 
 
 If you need to extract the image to a file, you can use `docker save --output <outputfilepath>.tar taps-backend:<version>` where `<outputfilepath>` is the path of the output file and `<version>` is the one that you used early, the tag of the image.
