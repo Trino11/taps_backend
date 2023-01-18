@@ -10,8 +10,8 @@ class UtilsRoutes{
     }
 
     config(){
-        this.router.get("/hash", utilsController.giveStatus) //Admin hash path util
-        this.router.get("/tryToken", utilsController.tryToken) //Path to try a token
+        //this.router.get("/hash", utilsController.giveStatus) //Admin hash path util
+        //this.router.get("/tryToken", utilsController.tryToken) //Path to try a token
         this.router.get('/minecraftVersions', utilsController.minecraftVersions)
     }
 }

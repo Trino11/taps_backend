@@ -22,7 +22,6 @@ class InfoController {
 
     public async showAllAdminInstances(req: Request, res: Response) {
         try {
-            //const instances = await db.query(`SELECT id, name FROM instances`)
             const instances = await db.query(`SELECT i.id AS 'id', i.name AS 'name', t.name AS 'tag' FROM instances i, tags t WHERE i.tag = t.id`)
 
             if (instances.length == 0)
@@ -35,7 +34,6 @@ class InfoController {
 
     public async showAllInstances(req: Request, res: Response) {
         try {
-            //const instances = await db.query(`SELECT id, name FROM instances`)
             const instances = await db.query(`SELECT i.id AS 'id', i.name AS 'name', t.name AS 'tag' FROM instances i, tags t WHERE i.tag = t.id AND i.admin = 0`)
 
             if (instances.length == 0)

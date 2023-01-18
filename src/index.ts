@@ -31,7 +31,7 @@ class Server {
         ws: true
     }
 
-    private options = { //Certs files
+    private options = { //Selfsigned certs files
         key: fs.readFileSync('crt/server.key'),
         cert: fs.readFileSync('crt/server.crt')
     }
@@ -62,7 +62,7 @@ class Server {
         this.app.use("/api/status", statusRoutes);
         this.app.use("/api/login", loginRoutes);
         this.app.use("/api/manage/login", auth, sessions, permissions("login"), manageRoutes);
-        this.app.use("/api/recovery", recoveryRoutes); //TODO:Actualizar rutas ./../info.md
+        this.app.use("/api/recovery", recoveryRoutes);
         this.app.use("/api/manage/user", auth, sessions, manageUserRoutes);
         this.app.use("/api/manage/instance", auth, sessions, manageInstanceRoutes);
         this.app.use("/api/actions", auth, sessions, actionsRoutes);
@@ -72,12 +72,14 @@ class Server {
 
 
     start() {
+        /*
         httpProxy.createServer({
             target: hass,
             ws: true,
             ssl: this.options
         }).listen(this.app.get("port") + 1);
         console.log("Proxy started. Listening on port ", this.app.get("port") + 1)
+        */
 
         https.createServer(this.options, this.app)
             .listen(this.app.get("port"), () =>

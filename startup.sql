@@ -37,8 +37,8 @@ CREATE TABLE `userxroles` (
   PRIMARY KEY (`userId`,`roleId`),
   KEY `fkuxruser` (`userId`),
   KEY `fkuxrrol` (`roleId`),
-  CONSTRAINT `fkuxrrol` FOREIGN KEY (`roleId`) REFERENCES `roles` (`id`),
-  CONSTRAINT `fkuxruser` FOREIGN KEY (`userId`) REFERENCES `users` (`id`)
+  CONSTRAINT `fkuxrrol` FOREIGN KEY (`roleId`) REFERENCES `roles` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fkuxruser` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE `userssubscribedinstances` (

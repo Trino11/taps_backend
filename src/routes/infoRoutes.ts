@@ -10,7 +10,7 @@ class InfoRoutes {
     }
     
     config() {
-        this.router.get("/", infoController.showInfo); //Temporaly path to dev
+        this.router.get("/", infoController.showInfo); //Temporaly path for devs
     }
 }
 const infoRoutes = new InfoRoutes();

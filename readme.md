@@ -11,6 +11,12 @@ Receives an empty **get**
 Reply a json ``{status:"ok"} http:200``
 
 
+## /api/recovery/register/:token
+
+Receives a token on the URL on **post**  
+Reply a json ``{msg: "user will be created"} http:200``
+
+
 ## /api/login
 
 Receives a json `{username:"", password:""}` on **post**   

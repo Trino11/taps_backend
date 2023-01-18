@@ -108,7 +108,8 @@ class InfoController {
             const uid = InfoController.getUid(req)
             await db.query(`DELETE FROM users WHERE users.id = ${uid}`)
             res.json({ msg: "The user will be deleted" })
-        } catch (error) {
+        } catch (error:any) {
+            console.log(error.message)
             res.status(400).json({ msg: "There was a problem, try again later" })
         }
     }
