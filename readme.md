@@ -39,7 +39,7 @@ You need to set a `.env` file in the root of the project and those are the varia
 ### Using prebuilt package
 
 You can just import the prebuilt package and run it directly following this steps
-- `docker import https://............`
+- `docker import https://github.com/Trino11/taps_backend/releases/download/v1.1.1/taps-backend-1.1.1-dockerimg.tar`
 - Now you can just run `docker run ........` and passing the needed [enviorment variables](#enviorment-variables) as explained in the [prebuilt package](#in-the-prebuilt-package)
 
 ### Building with Dockerfile
