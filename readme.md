@@ -7,9 +7,14 @@ You'll need to execute the startup.sql in your database for the first time. The 
 
 There are some enviorment variables and ways to configure it.
 
+## In the prebuilt package
+
+Also you can just use the prebuilt package following [using prebuilt package](#using-prebuilt-package) and passing the variables into the arguments:
+`docker run .........`
+
 ## In the Dockerfile
 
-If you want to use Docker and you will build the project following [the docker building](#building-with-dockerfile), you can set them staticly in the Dockerfile or passing the into arguments in the `docker run` command.
+If you want to use Docker and you will build the project following [the docker building](#docker), you can set them staticly in the Dockerfile or passing the into arguments in the `docker run` command.
 - ENV DBHOST_ENV=127.0.0.1            The database host
 - ENV PORT_ENV=3000                   The app listening port
 - ENV DBPORT_ENV=3306                 The database port
@@ -17,15 +22,10 @@ If you want to use Docker and you will build the project following [the docker b
 - ENV DBPASSWORD_ENV=user             The database password
 - ENV DBDATABASE_ENV=paneldatabase    The database name
 
-## In the prebuilt package
-
-Also you can just use the prebuilt package following [using prebuilt package](#using-prebuilt-package) and passing the variables into the arguments:
-`docker run .........`
-
-## Using .env
+## Using env file
 
 Here, you will need to do the [dockerfile](#building-with-dockerfile) or [native](#native) option since you will need to build the project.
-The variables that you can set in the .env are
+You need to set a `.env` file in the root of the project and those are the variables that you can change.
 - ...
 - ...
 - ...
@@ -48,7 +48,7 @@ If you want, you can use Docker building by your own the container.
 - Clone the repository
 - Install the dependences using npm install.
 - Build the TypeScript project using `tsc` on the root.
-- Modify the Dockerfile described in [the docker enviorment variables](#in-the-dockerfile) if you need, you can set the default values of the ENV variables there. (You can also change the variables using [the .env file](#using-.env)).
+- Modify the Dockerfile described in [the docker enviorment variables](#in-the-dockerfile) if you need, you can set the default values of the ENV variables there. (You can also change the variables using [the .env file](#using-env-file)).
 - Run `docker build --tag taps-backend:<version> .` to generate a docker image of the project, replace `<version>` with a valid tag, you can just leave it "latest". 
 
 If you need to extract the image to a file, you can use `docker save --output <outputfilepath>.tar taps-backend:<version>` where `<outputfilepath>` is the path of the output file and `<version>` is the one that you used early, the tag of the image.
@@ -58,9 +58,9 @@ Then you can import the file image with `docker import <inputfilepath>.tar` wher
 
 ## Native
 
-To run the project directly with node, you will need to 
+To run the project directly with Node, you will need to 
 - Clone the repository
-- Configure the .env variables creating a `.env` file on the root, and using the [Enviorment Variables](#enviorment-variables)
+- Configure the .env variables creating a `.env` file on the root, and using the [Enviorment Variables](#using-env-file)
 - Install node dependences using `npm install`
 - Build the project using `tsc` if you have TypeScript installed globally, or `npm run build` if not.
 - The command `npm start` will start the app in developer mode.
