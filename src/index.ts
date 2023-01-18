@@ -2,7 +2,7 @@ import express, { Application, request, response, Router } from 'express';
 import fs from 'fs';
 import https from 'https';
 import cors from 'cors';
-import httpProxy from 'http-proxy'
+// import httpProxy from 'http-proxy'
 import sessions from './middlewares/t-sessions.js';
 import auth from './middlewares/t-auth.js';
 import permissions from './middlewares/t-permissions';
@@ -20,21 +20,17 @@ import actionsRoutes from './routes/actionsRoutes.js';
 
 require('dotenv').config()
 
-const hass = 'http://192.168.0.248:8123'
+// const hass = ''
 
 class Server {
 
     private app: Application;
+    private isHttp: boolean = false;
 
-    private optionsProxy = {
-        target: hass,
-        ws: true
-    }
-
-    private options = { //Selfsigned certs files
-        key: fs.readFileSync('crt/server.key'),
-        cert: fs.readFileSync('crt/server.crt')
-    }
+    // private optionsProxy = {
+    //     target: hass,
+    //     ws: true
+    // }
 
     constructor() {
         this.app = express();
@@ -43,7 +39,30 @@ class Server {
     }
 
     config() { //Express configuration
-        this.app.set("port", process.env.PORT || 3000);
+        this.app.set("port", process.env.PORT_ENV || 3000);
+
+        if (process.env.DBHOST === undefined)
+            process.env.DBHOST = process.env.DBHOST_ENV
+        if (process.env.PORT === undefined)
+            process.env.PORT = process.env.PORT_ENV
+        if (process.env.DBPORT === undefined)
+            process.env.DBPORT = process.env.DBPORT_ENV
+        if (process.env.DBUSER === undefined)
+            process.env.DBUSER = process.env.DBUSER_ENV
+        if (process.env.DBPASSWORD === undefined)
+            process.env.DBPASSWORD = process.env.DBPASSWORD_ENV
+        if (process.env.DBDATABASE === undefined)
+            process.env.DBDATABASE = process.env.DBDATABASE_ENV
+
+        try {
+            const myCert = {
+                key: fs.readFileSync('crt/server.key'),
+                cert: fs.readFileSync('crt/server.crt')
+            }
+            this.app.set("certs", myCert)//Selfsigned certs files
+        } catch (error) {
+            this.isHttp = true;
+        }
 
         this.app.use(cors());
         this.app.use(express.json());
@@ -55,10 +74,10 @@ class Server {
             cookie: { secure: true }
         }))
     }
-    
+
     routes() { //Express routes configuration
         //this.app.use("/api");
-        
+
         this.app.use("/api/status", statusRoutes);
         this.app.use("/api/login", loginRoutes);
         this.app.use("/api/manage/login", auth, sessions, permissions("login"), manageRoutes);
@@ -81,10 +100,12 @@ class Server {
         console.log("Proxy started. Listening on port ", this.app.get("port") + 1)
         */
 
-        https.createServer(this.options, this.app)
-            .listen(this.app.get("port"), () =>
-                console.log("Server started. Listening on port ", this.app.get("port"))); //https server
-        //this.app.listen(this.app.get("port"), () => console.log("Server started. Listening on port ", this.app.get("port"))); //http server
+        if (this.isHttp)
+            this.app.listen(this.app.get("port"), () => console.log("Server started using http. Listening on port ", this.app.get("port"))); //http server
+        else
+            https.createServer(this.app.get("certs"), this.app)
+                .listen(this.app.get("port"), () =>
+                    console.log("Server started using https. Listening on port ", this.app.get("port"))); //https server
     }
 }
 let server = new Server();

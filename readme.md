@@ -1,5 +1,18 @@
 # Startup
+
 You'll need to execute the startup.sql in your database for the first time. The default user credentials are root root, you can change it throw the user management.
+
+
+# Enviorment Variables: 
+
+You can use a .env on the root directory of the project, or in the Dockerfile using:
+- ENV DBHOST_ENV=127.0.0.1
+- ENV PORT_ENV=3000
+- ENV DBPORT_ENV=3306
+- ENV DBUSER_ENV=user
+- ENV DBPASSWORD_ENV=user
+- ENV DBDATABASE_ENV=paneldatabase
+
 
 
 # Routes
