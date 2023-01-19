@@ -54,6 +54,8 @@ class Server {
         if (process.env.DBDATABASE === undefined)
             process.env.DBDATABASE = process.env.DBDATABASE_ENV
 
+        console.log("Using database on " + process.env.DBHOST + ":" + process.env.PORT +" with user "+process.env.DBUSER)
+
         try {
             const myCert = {
                 key: fs.readFileSync('crt/server.key'),

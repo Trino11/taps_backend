@@ -3,8 +3,6 @@ import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import https from 'https'
 
-require('dotenv').config()
-
 class StatusController {
 
     public giveStatus(req: Request, res: Response) { //Hash the password and send it to the user, for dev

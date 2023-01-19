@@ -3,8 +3,6 @@ import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import db from '../database'
 
-require('dotenv').config()
-
 class RecoveryController {
 
     public async createUserByToken(req: any, res: any) {

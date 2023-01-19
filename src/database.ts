@@ -1,7 +1,5 @@
 import mysql, { PoolConfig } from 'promise-mysql';
 
-require('dotenv').config()
-
 const database:PoolConfig={
     host:String(process.env.DBHOST),
     port:Number(process.env.DBPORT),

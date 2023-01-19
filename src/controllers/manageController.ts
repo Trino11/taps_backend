@@ -2,8 +2,6 @@ import { Request, Response } from 'express';
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 
-require('dotenv').config()
-
 class ManageController {
 
     public tryToken(req: Request, res: Response) { //Check if the token is valid, return 401 if not

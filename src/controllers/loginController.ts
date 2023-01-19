@@ -3,7 +3,6 @@ import jwt from 'jsonwebtoken'
 import bcrypt from 'bcrypt'
 
 import db from '../database';
-require('dotenv').config()
 
 class LoginController {
     private static async userMatchPassword(user: string, pass: string): Promise<number> {

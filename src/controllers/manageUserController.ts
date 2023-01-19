@@ -3,7 +3,6 @@ import db from './../database'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 
-require('dotenv').config()
 
 class InfoController {
 

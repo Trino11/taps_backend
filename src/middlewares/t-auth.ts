@@ -1,8 +1,6 @@
 import { Router } from "express";
 import jwt from 'jsonwebtoken'
 
-require('dotenv').config()
-
 const auth = (req: any, res: any, next: Function) => { //Auth module middleware
     let token = req.headers['x-access-token'] || req.headers['authorization'];
     if (token?.includes("Bearer "))
