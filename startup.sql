@@ -52,5 +52,7 @@ CREATE TABLE `userssubscribedinstances` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 INSERT INTO `roles`(`id`,`name`,`permissions`,`admin`)VALUES('1', 'admin', '[\"login\", \"user-show\", \"user-show-all\", \"user-create\", \"user-update\", \"user-update-all\", \"instance-show-subscribed\", \"instance-show-other-subscribed\", \"instance-show-all\", \"instance-show-admin\", \"instance-subscribe\", \"instance-subscribe-admin\", \"instance-other-subscribe\", \"instance-other-subscribe-admin\", \"user-delete-all\"]', '1');
+INSERT INTO `roles`(`id`,`name`,`permissions`,`admin`)VALUES('2', 'standard', '[\"login\", \"user-show\", \"instance-show-subscribed\"]', '0');
 INSERT INTO `users`(`id`,`username`,`password`,`token`)VALUES('1', 'root', '', NULL);
 INSERT INTO `userxroles`(`userId`,`roleId`)VALUES('1', '1');
+
