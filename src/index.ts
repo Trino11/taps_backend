@@ -41,19 +41,6 @@ class Server {
     config() { //Express configuration
         this.app.set("port", process.env.PORT_ENV || 3000);
 
-        if (process.env.DBHOST === undefined)
-            process.env.DBHOST = process.env.DBHOST_ENV
-        if (process.env.PORT === undefined)
-            process.env.PORT = process.env.PORT_ENV
-        if (process.env.DBPORT === undefined)
-            process.env.DBPORT = process.env.DBPORT_ENV
-        if (process.env.DBUSER === undefined)
-            process.env.DBUSER = process.env.DBUSER_ENV
-        if (process.env.DBPASSWORD === undefined)
-            process.env.DBPASSWORD = process.env.DBPASSWORD_ENV
-        if (process.env.DBDATABASE === undefined)
-            process.env.DBDATABASE = process.env.DBDATABASE_ENV
-
         console.log("Using database on " + process.env.DBHOST + ":" + process.env.PORT +" with user "+process.env.DBUSER)
 
         try {

@@ -1,12 +1,13 @@
 import mysql, { PoolConfig } from 'promise-mysql';
 
 const database:PoolConfig={
-    host:String(process.env.DBHOST),
-    port:Number(process.env.DBPORT),
-    user:String(process.env.DBUSER),
-    password:String(process.env.DBPASSWORD),
-    database:String(process.env.DBDATABASE)
+    host:process.env.DBHOST,//@ts-ignore
+    port:process.env.DBPORT,
+    user:process.env.DBUSER,
+    password:process.env.DBPASSWORD,
+    database:process.env.DBDATABASE
 }
+console.log("Using database on " + process.env.DBHOST + ":" + process.env.PORT +" with user "+process.env.DBUSER)
 
 const pool = mysql.createPool(database);
 
